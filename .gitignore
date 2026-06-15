@@ -1,0 +1,27 @@
+# Dependencies
+.pnpm-store/
+node_modules/
+
+# Build outputs
+dist/
+
+# Cache
+.eslintcache
+
+# Test coverage
+coverage
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OSX
+.DS_Store
+*.local
+
+# Agents
+.claude/
+.cursor/
+.agents/
+.codex/

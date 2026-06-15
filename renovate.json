@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "group:allNonMajor",
+    ":semanticCommitTypeAll(chore)",
+    ":widenPeerDependencies",
+    ":approveMajorUpdates",
+    ":maintainLockFilesWeekly"
+  ],
+  "baseBranchPatterns": [
+    "main"
+  ],
+  "meteor": {
+    "enabled": false
+  },
+  "rangeStrategy": "bump",
+  "npm": {
+    "commitMessageTopic": "{{prettyDepType}} {{depName}}"
+  },
+  "ignoreDeps": ["node"]
+}

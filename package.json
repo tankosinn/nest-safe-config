@@ -1,0 +1,98 @@
+{
+  "name": "nest-safe-config",
+  "version": "0.0.0",
+  "packageManager": "pnpm@11.6.0",
+  "description": "Validate NestJS config with Standard Schema.",
+  "author": "Tankosin <tankosinn@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/tankosinn/nest-safe-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tankosinn/nest-safe-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tankosinn/nest-safe-config/issues"
+  },
+  "keywords": [
+    "nestjs",
+    "config",
+    "env",
+    "environment-variables",
+    "validation",
+    "schema",
+    "standard-schema",
+    "zod",
+    "valibot",
+    "arktype",
+    "type-safe",
+    "typescript"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.cts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix .",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:e2e": "vitest run --project e2e",
+    "test:unit": "vitest run --project unit",
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks",
+    "prepublishOnly": "pnpm run build",
+    "publish:ci": "tsx scripts/publish.ts",
+    "release": "bumpp"
+  },
+  "peerDependencies": {
+    "@nestjs/config": "^4.0.0"
+  },
+  "dependencies": {
+    "@standard-schema/spec": "^1.1.0",
+    "destr": "^2.0.5",
+    "scule": "^1.3.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "9.0.0",
+    "@nestjs/common": "11.1.26",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "11.1.26",
+    "@nestjs/testing": "11.1.26",
+    "@types/node": "25.9.3",
+    "@vitest/coverage-v8": "4.1.8",
+    "arktype": "^2.2.0",
+    "bumpp": "11.1.0",
+    "eslint": "10.4.1",
+    "installed-check": "10.0.1",
+    "lint-staged": "17.0.7",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2",
+    "simple-git-hooks": "2.13.1",
+    "tsdown": "0.22.2",
+    "tsx": "4.22.4",
+    "typescript": "6.0.3",
+    "valibot": "^1.4.1",
+    "vitest": "4.1.8",
+    "zod": "^4.4.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --cache --fix"
+  }
+}
