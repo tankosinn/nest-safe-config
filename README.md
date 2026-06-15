@@ -30,6 +30,7 @@ Each leaf schema maps to one environment variable. Nested objects become key pre
 
 ```ts
 // app.config.ts
+import type { InferConfig } from 'nest-safe-config'
 import { defineConfig } from 'nest-safe-config'
 import { z } from 'zod'
 
@@ -41,6 +42,8 @@ export const config = defineConfig({
     poolSize: z.number().default(10),
   },
 })
+
+export type AppConfig = InferConfig<typeof config>
 ```
 
 <details>
@@ -77,8 +80,6 @@ export const config = defineConfig({
     poolSize: type('number'),
   },
 })
-
-export type AppConfig = InferConfig<typeof config>
 ```
 
 > ArkType `.default()` is not supported on a standalone leaf. See [Known limitations](#known-limitations).
@@ -111,12 +112,11 @@ NestJS loads `.env` and merges it over `process.env` before `validate` runs, so 
 
 ### 3. Read config in a service
 
-Type `ConfigService` with `InferConfig` for autocompletion and inferred return types on `get`.
+Type `ConfigService` with the exported `AppConfig` for autocompletion and inferred return types on `get`.
 
 ```ts
 // app.service.ts
-import type { InferConfig } from 'nest-safe-config'
-import type { AppConfig, config } from './app.config'
+import type { AppConfig } from './app.config'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
